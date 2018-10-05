@@ -29,12 +29,18 @@ router.get('/', (req, res) => {
   actionModel.get().then(allPosts => {
     res.status(200).json(allPosts)
   })
+  .catch(err => {
+      res.status(500).json({message: "The action information could not be retrieved"})
+  })
 });
 
 router.get('/:id', (req, res) => {
   actionModel.get(req.params.id).then(post => {
     res.status(200).json(post)
   })
+  .catch(err => {
+    res.status(500).json({message: "The action information could not be retrieved"})
+})
 });
 
 router.post('/', validProject, (req, res) => {
@@ -48,7 +54,7 @@ router.post('/', validProject, (req, res) => {
         res.status(200).json(postId)
       })
       .catch(err => {
-        res.status(500).json(err)
+        res.status(500).json({message: "Error while posting"})
       })
   }
 });
@@ -59,7 +65,7 @@ router.put('/:id', (req, res) => {
     res.status(200).json(actions)
   })
   .catch(err => {
-    res.status(500).json(err)
+    res.status(500).json({message: "error while updating"})
   })
 });
 
@@ -69,7 +75,7 @@ router.delete('/:id', (req, res) => {
     res.status(200).json(newProjectId)
   })
   .catch(err => {
-    res.status(400).json(err)
+    res.status(400).json({message: "error while deleting"})
   })
 });
 
