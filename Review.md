@@ -30,6 +30,6 @@ We can partition our application by usiing express routing.
 
 ## What is express.json() and why do we need it?
 
-Express.json parses incoming requests with json, and it is also a middleware funciton. 
+Express.json parses incoming requests with json, and it is also a middleware function. 
 
 
